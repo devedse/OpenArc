@@ -129,6 +129,7 @@ jobs:
   build-preview-nightly:
     name: Build Preview Nightly Image (from source)
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
     if: >-
       github.event_name != 'workflow_dispatch' ||
       inputs.image_variant == 'all' ||
