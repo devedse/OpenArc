@@ -117,7 +117,7 @@ RUN . /openvino_src/openvino/.venv/bin/activate && \
     OPENVINO_DIR=/openvino_src/openvino/.venv/lib/python3.12/site-packages/openvino/cmake \
         CMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
         CMAKE_C_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
-        pip wheel . --no-deps --no-build-isolation --wheel-dir /tmp/genai_wheels && \
+        pip wheel . --no-deps --no-build-isolation --wheel-dir /tmp/genai_wheels --verbose && \
     uv pip install /tmp/genai_wheels/*.whl
 
 COPY ./scripts /openvino_src/scripts
