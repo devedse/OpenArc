@@ -101,7 +101,7 @@ RUN cd /openvino_src/openvino && \
         -S ./ \
         -B ./build && \
     cd build && \
-    cmake --build ./  --parallel $(nproc) --target ie_wheel && \
+    cmake --build ./  --parallel 1 --target ie_wheel && \
     uv pip install wheels/*.whl
 
 RUN . /openvino_src/openvino/.venv/bin/activate && \
@@ -115,6 +115,7 @@ RUN . /openvino_src/openvino/.venv/bin/activate && \
     uv pip install 'py-build-cmake==0.5.0' && \
     cd /openvino_src/openvino.genai && \
     OPENVINO_DIR=/openvino_src/openvino/.venv/lib/python3.12/site-packages/openvino/cmake \
+        CMAKE_BUILD_PARALLEL_LEVEL=1 \
         CMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
         CMAKE_C_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
         pip wheel . --no-deps --no-build-isolation --wheel-dir /tmp/genai_wheels --verbose && \
